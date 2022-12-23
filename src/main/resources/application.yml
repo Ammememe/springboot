@@ -10,14 +10,15 @@ spring:
     hibernate:
       ddl-auto: create-drop
     properties:
-       hibernate:
-         dialect: org.hibernate.dialect.PostgreSQLDialect
-         format_sql: true
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
     show-sql: true
   main:
     web-application-type: servlet
-
-
-
-
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
+    mode: HTML5
+    encoding: UTF-8
 

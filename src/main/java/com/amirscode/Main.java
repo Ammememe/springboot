@@ -8,17 +8,16 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Objects;
 
 @SpringBootApplication
 @RestController
 @RequestMapping("library")
 public class Main {
 
-    private final CustomerRepository customerRepository;
+    private static CustomerRepository customerRepository;
 
     public Main(CustomerRepository customerRepository){
-        this.customerRepository = customerRepository;
+        Main.customerRepository = customerRepository;
     }
 
     public static void main(String[] args) {
@@ -30,7 +29,7 @@ public class Main {
 
 
     @GetMapping
-    public List<Customer> getCustomers(){
+    public static List<Customer> getCustomers(){
         return customerRepository.findAll();
     }
     record NewCustomerRequest(
@@ -54,6 +53,7 @@ public class Main {
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Failed to add customer.");
         }
+
 
     }
 
@@ -124,5 +124,12 @@ public class Main {
 
 
 
-
 }
+
+//Merging
+
+
+
+
+
+
